@@ -4,14 +4,18 @@ import {
     BrowserRouter as Router,
     Route,
     Link
-} from 'react-router-dom'
+} from 'react-router-dom';
+
+import Archive from './Archive';
+import Active from './Active';
+import Backlog from './Backlog';
 
 
 class App extends Component {
     render() {
         return (
-            <div>
-                <Router>
+            <Router>
+                <div className="router-content">
                     <header>
                         <nav>
                             <ul>
@@ -27,8 +31,23 @@ class App extends Component {
                             </ul>
                         </nav>
                     </header>
-                </Router>
-            </div>
+
+                    <main>
+                        <Route
+                            path="/backlog"
+                            component={Backlog}
+                        />
+                        <Route
+                            path="/active"
+                            component={Active}
+                        />
+                        <Route
+                            path="/archive"
+                            component={Archive}
+                        />
+                    </main>
+                </div>
+            </Router>
         );
     }
 }
