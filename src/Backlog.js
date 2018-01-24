@@ -15,12 +15,22 @@ export default class Backlog extends Component {
     });
   }
 
+  removeTask(task) {
+    let tasks = this.state.tasks.slice();
+    let index = tasks.indexOf(task);
+    tasks.splice(index, 1);
+    this.setState({
+      tasks: tasks
+    })
+  }
+
   renderTasksList() {
     return this.state.tasks.map((task, index) => {
       return (
         <li key={task.name + index}>
           <p>Name: {task.name}</p>
           <p>Description: {task.description}</p>
+          <p><button onClick={() => this.removeTask(task)}>Remove!</button></p>
         </li>);
     });
   }
